@@ -1,10 +1,12 @@
 import { ProductList } from '@/components/ProductsList';
+import { ProductHeader } from '../components/ProductHeader';
 
 // '/'에 해당하는 페이지 컴포넌트
 const ProductPage = () => {
+	const headerTitle = '상품 목록 페이지';
 	return (
 		<div>
-			<h1>상품 목록 페이지</h1>
+			<ProductHeader title={headerTitle} />
 			<ProductList />
 		</div>
 	);
