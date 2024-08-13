@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 
 /**
- * @author
+ * @author {상품 상세 페이지 컴포넌트}
  * @function ProductDetailPage
  **/
 
