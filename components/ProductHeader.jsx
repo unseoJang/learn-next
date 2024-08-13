@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 
 /**
  * @author
@@ -6,5 +6,5 @@ import React from 'react';
  **/
 
 export const ProductHeader = ({ title }) => {
-	return <h1>{title}</h1>;
-};
+	return <h1>{title}</h1>
+}

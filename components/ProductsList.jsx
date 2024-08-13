@@ -1,19 +1,19 @@
-import axios from 'axios';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import styles from './ProductList.module.css';
-import Link from 'next/link';
+import axios from "axios"
+import Image from "next/image"
+import { useEffect, useState } from "react"
+import styles from "./ProductList.module.css"
+import Link from "next/link"
+import { fetchProducts } from "@/api"
 
 export const ProductList = props => {
-	const [products, setProducts] = useState();
+	const [products, setProducts] = useState()
 	useEffect(() => {
-		axios.get('http://localhost:4000/products').then(response => {
-			response.data;
-			setProducts(response.data);
-		});
-	}, []);
+		fetchProducts().then(response => {
+			setProducts(response.data)
+		})
+	}, [])
 
-	console.log(products);
+	console.log(products)
 
 	return (
 		<ul>
@@ -34,8 +34,8 @@ export const ProductList = props => {
 								</div>
 							</Link>
 						</li>
-					);
+					)
 				})}
 		</ul>
-	);
-};
+	)
+}
