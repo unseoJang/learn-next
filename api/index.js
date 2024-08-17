@@ -22,10 +22,12 @@ function fetchProducts(productId) {
  * @param {string} name
  * @returns
  */
-function createCartItem(id, name) {
+function createCartItem({ id, name, imageUrl, price }) {
 	return instance.post("/carts", {
 		id,
 		name,
+		imageUrl,
+		price,
 	})
 }
 
@@ -38,4 +40,12 @@ function fetchProductsById(id) {
 	return instance.get(`/products/${id}`)
 }
 
-export { fetchProducts, fetchProductsById, createCartItem }
+/**
+ * 장바구니 목록을 들고오는 API 함수
+ * @returns
+ */
+function fetchCarts() {
+	return instance.get("/carts")
+}
+
+export { fetchProducts, fetchProductsById, createCartItem, fetchCarts }

@@ -11,28 +11,25 @@ import { createCartItem } from "@/api"
 
 const ProductInfo = ({ productDetail }) => {
 	const router = useRouter()
+	const { id, name, imageUrl, price } = productDetail
 	const addCart = async () => {
 		// 1. 장바구니에 아이템을 담는 API 함수 호출
-		// 2. 장바구니 페이지로 이동
-		const res = await createCartItem(productDetail.id, productDetail.name)
+
+		const res = await createCartItem(productDetail)
 		console.log(res)
 		alert("장바구니에 추가됨")
+		// 2. 장바구니 페이지로 이동
 		router.push("/cart")
 	}
 
 	return (
 		<div className={styles.container}>
 			<div>
-				<Image
-					src={productDetail.imageUrl}
-					alt={productDetail.name}
-					width={250}
-					height={200}
-				/>
+				<Image src={imageUrl} alt={name} width={250} height={200} />
 			</div>
 			<div className={styles.description}>
-				<p>{productDetail.name}</p>
-				<p>{productDetail.price}</p>
+				<p>{name}</p>
+				<p>{price}</p>
 				<button onClick={addCart} type="button">
 					장바구니에 담기
 				</button>
