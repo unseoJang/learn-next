@@ -1,4 +1,4 @@
-import { ProductList } from "@/components/ProductsList"
+import { ProductList } from "@/components/product-list/ProductsList"
 import { ProductHeader } from "../components/ProductHeader"
 
 // '/'에 해당하는 페이지 컴포넌트

@@ -3,12 +3,11 @@ import { CartHeader } from "@/components/cart/CartHeader"
 import { CartList } from "@/components/cart/CartList"
 
 // '/cart'에 해당하는 페이지 컴포넌트
-const CartPage = carts => {
-	console.log(carts)
+const CartPage = ({ carts }) => {
 	return (
 		<div>
 			<CartHeader />
-			<CartList />
+			<CartList carts={carts} />
 		</div>
 	)
 }

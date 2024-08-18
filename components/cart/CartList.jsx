@@ -1,10 +1,65 @@
+import Image from "next/image"
 import React from "react"
+import styles from "./CartList.module.css"
+import { removeCartItem } from "@/api"
+import { useRouter } from "next/router"
+import axios from "axios"
 
 /**
  * @author
  * @function CartList
  **/
 
-export const CartList = props => {
-	return <div>CartList</div>
+// map() [1,2,3] => [10,20,30]
+
+// reduce()  [1,2,3] => 6
+
+export const CartList = ({ carts }) => {
+	const router = useRouter()
+
+	const totalPrice = carts.reduce((acc, cur) => {
+		return acc + parseFloat(cur.price)
+	}, 0)
+
+	const removeCart = async id => {
+		const { data } = await axios.post("http://localhost:3000/api/carts", {
+			data: {
+				id,
+			},
+		})
+		alert(`${data.name}이 삭제 되었습니다`)
+		router.replace(router.asPath)
+	}
+
+	return (
+		<div>
+			<div>
+				<ul>
+					{carts.map(cart => {
+						return (
+							<li key={cart.id} className={styles.item}>
+								<div>
+									<Image
+										src={cart.imageUrl}
+										alt={cart.id}
+										width={75}
+										height={75}
+									/>
+								</div>
+								<div className={styles.description}>
+									<div>{cart.name}</div>
+									<div>{cart.price}</div>
+									<button onClick={() => removeCart(cart.id)}>삭제하기</button>
+								</div>
+							</li>
+						)
+					})}
+				</ul>
+			</div>
+			<div>
+				<p>총 가격 : {totalPrice}$</p>
+				<p>총 수량 : {carts.length}</p>
+			</div>
+		</div>
+	)
 }
